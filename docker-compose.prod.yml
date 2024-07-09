@@ -1,0 +1,25 @@
+volumes:
+  web_root_docs:
+
+services:
+  ws:
+    image: ethnexus/smnrp:2.4.3
+    volumes:
+      - "web_root_docs:/web_root:z"
+    ports:
+      - "6080:80"
+      - "6443:443"
+    env_file: .env
+    restart: unless-stopped
+  acint:
+    image: ethnexus/acint
+    volumes:
+      - ./.acint:/do
+    env_file: .env
+  mkdocs:
+    build:
+      context: docs
+      dockerfile: Dockerfile
+    volumes:
+      - "web_root_docs:/docs/site:z"
+    command: build
