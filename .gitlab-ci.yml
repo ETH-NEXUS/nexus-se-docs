@@ -1,12 +1,12 @@
 stages:
-  - build
+  - deploy
 
-build_docs:
-  stage: build
+deploy_docs:
+  stage: deploy
   before_script:
     - apk add --update curl && rm -rf /var/cache/apk/*
   script:
-    - echo "Building the docs"
+    - echo "Deploying the docs"
     - |
       curl --user "$DOCS_USER:$DOCS_PASS" --request POST $ACINT_URL -H "Content-Type: application/json" -d "{\"action\": \"$ACINT_ACTION\", \"token\": \"$ACINT_TOKEN\"}"
   only:
