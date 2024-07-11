@@ -26,6 +26,9 @@ update() {
 
         repo_name=$(echo ${repos[i]} | awk -F'/' '{print $NF}' | awk -F'.' '{print $1}')
 
+	if [ "$repo_name" = "nexus-se-docs" ]; then
+    	    repo_name="docs"
+	fi
 
         if [ ! -d "projects/$repo_name" ]; then
             echo -e "\033[34mCloning repository ${repos[i]}...\033[0m"
@@ -50,12 +53,17 @@ update() {
             mkdir -p $root_dir/docs/docs/$repo_name
         fi
 
-        find $root_dir/projects/$repo_name/docs/docs/ \
+	find $root_dir/projects/$repo_name/docs/docs/ \
             -mindepth 1 \
             -maxdepth 1 \
             -type d \
-            ! \( -name assets -o -name stylesheets \) \
-            -exec rsync -a {} $root_dir/docs/docs/$repo_name/ \;
+            ! \( -name assets -o -name stylesheets \) |
+	while read -r directory; do
+    	    dest_dir=$root_dir/docs/docs/$repo_name/$(basename "$directory")
+    	    mkdir -p "$dest_dir"
+    	    cp -a "$directory/"* "$dest_dir"
+	done
+
 
         if [ "$repo_name" != "docs" ]; then
             cp $root_dir/projects/$repo_name/docs/docs/index.md $root_dir/docs/docs/$repo_name/index.md
