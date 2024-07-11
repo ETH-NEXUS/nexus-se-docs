@@ -1,5 +1,5 @@
 ---
-title: NEXUS Docs
+title: NEXUS Docs 🪄
 ---
 
 # NEXUS SE Documentation
