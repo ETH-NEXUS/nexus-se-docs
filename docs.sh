@@ -8,7 +8,7 @@ update() {
     cd $root_dir
 
     if [ -f .env ]; then
-        export $(grep -E '^(TOKEN_NAME|TOKEN_PASS|REPOSITORIES|BRANCHES|DCC_ENV)=' .env | xargs)
+        export $(grep -E '^(REPOSITORIES|BRANCHES|DCC_ENV)=' .env | xargs)
     fi
 
     IFS=',' read -r -a repos <<< "$REPOSITORIES"
@@ -29,7 +29,7 @@ update() {
 
         if [ ! -d "projects/$repo_name" ]; then
             echo -e "\033[34mCloning repository ${repos[i]}...\033[0m"
-            git clone https://$TOKEN_NAME:$TOKEN_PASS@${repos[i]} projects/$repo_name
+            git clone https://${repos[i]} projects/$repo_name
             cd projects/$repo_name
             git checkout ${branches[i]}
         else
