@@ -1,5 +1,5 @@
 ---
-title: 🏠 Home
+title: NEXUS Docs
 ---
 
 # NEXUS SE Documentation
