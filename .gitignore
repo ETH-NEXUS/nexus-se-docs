@@ -12,3 +12,4 @@ docs/docs/*
 !docs/docs/docs/
 !docs/docs/stylesheets/
 !docs/docs/index.md
+!docs/dev_notes/
