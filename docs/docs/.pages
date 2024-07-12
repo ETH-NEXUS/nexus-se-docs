@@ -1,0 +1,5 @@
+nav:
+    - index.md
+    - dev_notes
+    - ...
+    - Mkdocs: docs
