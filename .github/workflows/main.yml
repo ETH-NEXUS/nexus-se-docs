@@ -2,9 +2,13 @@ name: Documentation deployment workflow
 
 on:
   push:
+    branches:
+      - main
     paths:
       - docs/**/*
   pull_request:
+    branches:
+      - main
     paths:
       - docs/**/*
 
