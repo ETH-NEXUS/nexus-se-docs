@@ -1,3 +1,7 @@
+---
+title: GitHub Setup
+---
+
 ### Folder Structure
 The folder `docs/docs` contains the main content of the docs.
 
@@ -32,25 +36,36 @@ nav:
     !!! info
         Alternatively ask one of the server admins to add your project to the `.env` file.
 
-2. Add or expand the `.gitlab-ci.yml` at the root of your project with the following entries:
+2. Add or expand the `.github/workflows/main.yml` at the root of your project with the following entries:
 
-    ```yaml title=".gitlab-ci.yml" linenums="1"
-    stages:
-        - build # if you already have a list of stages simply add this stage to others
+    ```yaml title="main.yml" linenums="1"
+    name: Documentation deployment workflow
 
-    build_docs:
-        stage: build
-        before_script:
-            - apk add --update curl && rm -rf /var/cache/apk/*
-        script:
-            - echo "Building the docs"
-            - |
-            curl --user "$DOCS_USER:$DOCS_PASS" --request POST $ACINT_URL -H "Content-Type: application/json" -d "{\"action\": \"$ACINT_ACTION\", \"token\": \"$ACINT_TOKEN\"}"
-        only:
-            changes:
-            - "docs/**/*"
+    on:
+      push:
+        paths:
+          - docs/**/*
+      pull_request:
+        paths:
+          - docs/**/*
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout code
+            uses: actions/checkout@v3
+
+        - name: Install curl
+            run: sudo apt-get update && sudo apt-get install -y curl
+
+        - name: Deploying the docs
+            run: |
+            echo "Deploying the docs"
+            curl --request POST ${{ secrets.ACINT_URL }} -H "Content-Type: application/json" -d "{\"action\": \"${{ secrets.ACINT_ACTION }}\", \"token\": \"${{ secrets.ACINT_TOKEN }}\"}"
     ```
-
+3. Set the required secrets
 3. Copy the `docs` folder at the root of the [docs project](https://github.com/ETH-NEXUS/nexus-docs) into the root of your project.
 
 4. Expand your `docker-compose.yml` file:

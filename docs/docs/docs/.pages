@@ -3,4 +3,5 @@ nav:
     - general.md
     - advanced.md
     - visual.md
-    - setup.md
+    - setup_gitlab.md
+    - setup_github.md
