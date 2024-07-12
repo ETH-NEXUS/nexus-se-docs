@@ -49,7 +49,7 @@ nav:
         script:
             - echo "Building the docs"
             - |
-            curl --user "$DOCS_USER:$DOCS_PASS" --request POST $ACINT_URL -H "Content-Type: application/json" -d "{\"action\": \"$ACINT_ACTION\", \"token\": \"$ACINT_TOKEN\"}"
+            curl --request POST $ACINT_URL -H "Content-Type: application/json" -d "{\"action\": \"$ACINT_ACTION\", \"token\": \"$ACINT_TOKEN\"}"
         only:
             changes:
             - "docs/**/*"
