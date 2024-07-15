@@ -6,6 +6,15 @@ title: Commands
 
 This is a collection of useful linux commands that can be easily copy pasted.
 
+#### General
+
+**Replacing lines in a file**
+```bash linenums="1"
+- sed -i 's/^key_in_file=.*$/key_in_file=new_value/' ./path/to/my_file.txt
+```
+This will iterate over all lines of `./path/to/my_file.txt` and apply the specified changes. In this case these changes are the value of the `key_in_file` key. The sed command can also be used to apply the same changes to outputs of other functions.
+
+
 #### GIT
 
 **View all remotes**
