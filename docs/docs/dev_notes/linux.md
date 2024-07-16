@@ -10,10 +10,15 @@ This is a collection of useful linux commands that can be easily copy pasted.
 
 **Replacing lines in a file**
 ```bash linenums="1"
-- sed -i 's/^key_in_file=.*$/key_in_file=new_value/' ./path/to/my_file.txt
+sed -i 's/^key_in_file=.*$/key_in_file=new_value/' ./path/to/my_file.txt
 ```
 This will iterate over all lines of `./path/to/my_file.txt` and apply the specified changes. In this case these changes are the value of the `key_in_file` key. The sed command can also be used to apply the same changes to outputs of other functions.
 
+**Extract values from JSON files**
+```bash linenums="1"
+MY_VARIABLE=$(jq -r '.version' path/to/my/file.json)
+```
+The [jq package](https://jqlang.github.io/jq/) is a useful utility for processing `.json` files. Make sure to install it before attempting to use the above command.
 
 #### GIT
 
