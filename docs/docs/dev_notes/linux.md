@@ -18,7 +18,7 @@ This will iterate over all lines of `./path/to/my_file.txt` and apply the specif
 ```bash linenums="1"
 MY_VARIABLE=$(jq -r '.version' path/to/my/file.json)
 ```
-The [jq package](https://jqlang.github.io/jq/) is a useful utility for processing `.json` files. Make sure to install it before attempting to use the above command.
+The [jq package](https://jqlang.github.io/jq/) is a useful utility for processing `.json` files. Make sure to install it before attempting to use the above command. As mentioned on the webpage `jq is like sed for JSON data`.
 
 #### GIT
 
