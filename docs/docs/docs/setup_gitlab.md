@@ -27,7 +27,7 @@ nav:
 
 ### Adding Your Project
 
-1. Open `.env` file and add add the project url under the `REPOSITORIES` key and the desired branch under `BRANCHES` key.
+1. Login to the docs server and open the `.env` file in the docs folder on the server. Add the project url under the `REPOSITORIES` key and the desired branch under `BRANCHES` key.
 
     !!! warning
 
