@@ -59,13 +59,13 @@ nav:
 
         steps:
         - name: Checkout code
-            uses: actions/checkout@v3
+          uses: actions/checkout@v3
 
         - name: Install curl
-            run: sudo apt-get update && sudo apt-get install -y curl
+          run: sudo apt-get update && sudo apt-get install -y curl
 
         - name: Deploying the docs
-            run: |
+          run: |
             echo "Deploying the docs"
             curl --request POST ${{ secrets.ACINT_URL }} -H "Content-Type: application/json" -d "{\"action\": \"${{ secrets.ACINT_ACTION }}\", \"token\": \"${{ secrets.ACINT_TOKEN }}\"}"
     ```
