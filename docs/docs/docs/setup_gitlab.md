@@ -54,10 +54,11 @@ nav:
             changes:
             - "docs/**/*"
     ```
-3. Set the required secrets
-3. Copy the `docs` folder at the root of the [docs project](https://github.com/ETH-NEXUS/nexus-docs) into the root of your project.
 
-4. Expand your `docker-compose.yml` file:
+3. Set the required secrets
+4. Copy the `docs` folder at the root of the [docs project](https://github.com/ETH-NEXUS/nexus-docs) into the root of your project.
+
+5. Expand your `docker-compose.yml` file:
 
     ```yaml title="docker-compose.yml" linenums="1"
     services:

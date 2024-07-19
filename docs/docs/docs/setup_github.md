@@ -69,6 +69,7 @@ nav:
             echo "Deploying the docs"
             curl --request POST ${{ secrets.ACINT_URL }} -H "Content-Type: application/json" -d "{\"action\": \"${{ secrets.ACINT_ACTION }}\", \"token\": \"${{ secrets.ACINT_TOKEN }}\"}"
     ```
+
 3. Make sure to modify the branch on which you want this job to be triggered.
 4. Set the required secrets
 5. Copy the `docs` folder at the root of the [docs project](https://github.com/ETH-NEXUS/nexus-docs) into the root of your project.
