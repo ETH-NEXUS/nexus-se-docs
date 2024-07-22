@@ -32,9 +32,9 @@ python manage.py flush
 
 **Revert to a previous migration**
 ```bash linenums="1"
-python manage.py migrate 0032_name_of_migration
+python manage.py migrate app_name 0032_name_of_migration
 ```
-This will delete `0033_name_of_migration` and move the db one step back.
+This will undo `0033_name_of_migration` and move the db one step back. It is safe to delete the migration file after. It is also possible to just provide the first 4 numbers of the migration and not provide the full name.
 
 **Create fixutres**
 ```bash linenums="1"
@@ -47,3 +47,7 @@ The output should be saved to a `.json` file.
 python manage.py loaddata fixture_name.json
 ```
 
+**Start interactive terminal**
+```bash linenums="1"
+python manage.py shell
+```
