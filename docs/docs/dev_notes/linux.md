@@ -44,6 +44,16 @@ In some cases you may wish to add a second remote. For example in cases where yo
 git push -u -f remote_name
 ```
 
+**Revert already pushed commits**
+```bash linenums="1"
+# Assuming last commit was commit 5 and the one before was commit 4 and then 3 et.
+# We want to undo the last two commits
+git revert <commit_hash_5>
+git revert <commit_hash_4>
+# Push the reverts to your brachn
+git push
+```
+
 #### CRON
 The cron command-line utility is a job scheduler on Unix-like operating systems [^1]. It can be used to periodically run various scripts on your server. A detailed CRON guide is provide by [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-ubuntu-1804). A helpful utility for understanding the cron time settings can be found on the following link: [https://crontab.guru](https://crontab.guru)
 
