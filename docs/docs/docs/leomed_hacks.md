@@ -67,12 +67,14 @@ then
 fi
 ```
 
+{ start=2 }
 2. `[labtop]` Create a reverse ssh tunnel:
 
 ```bash
 ssh -4 -N -T -R 2222:localhost:2222 <leomed-vm>
 ```
 
+{ start=3 }
 3. `[labtop]` Copy over the private key of the tunnel (created by the script in 1.):
 
 ```bash
@@ -80,6 +82,7 @@ cd ~
 scp .ssh/tunnel <leomed-vm>:.ssh/tunnel
 ```
 
+{ start=4 }
 4. `[leomed-vm]` Configure `.ssh/config` entry for `github.com`:
 
 ```bash
@@ -98,12 +101,14 @@ Host github.com
 :wq
 ```
 
+{ start=5 }
 5. `[labtop]` Make sure you have loaded your github ssh key:
 
 ```bash
 ssh-add .ssh/<github-key>
 ```
 
+{ start=6 }
 6. `[labtop]` Make sure you have configured `ForwardAgent` for your ssh connection to the `leomed-vm`:
 
 ```bash
@@ -115,4 +120,5 @@ Host leomed-vm
 ...
 ```
 
+{ start=7 }
 7. `[labtop]` Now you can `ssh` to the `leomed-vm` and do what ever you want with git(hub).
