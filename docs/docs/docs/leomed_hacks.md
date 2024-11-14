@@ -39,7 +39,7 @@ Let's assume you want to have ssh access to github from inside LeoMed. This is p
 
 That can be setup going through the following steps:
 
-1. [laptop] Setup a local ssh-proxy using the following script:
+1. `[laptop]` Setup a local ssh-proxy using the following script:
 
 ```bash
 #!/usr/bin/env bash
@@ -67,20 +67,20 @@ then
 fi
 ```
 
-2. [labtop] Create a reverse ssh tunnel:
+2. `[labtop]` Create a reverse ssh tunnel:
 
 ```bash
 ssh -4 -N -T -R 2222:localhost:2222 <leomed-vm>
 ```
 
-3. [labtop] Copy over the private key of the tunnel (created by the script in 1.):
+3. `[labtop]` Copy over the private key of the tunnel (created by the script in 1.):
 
 ```bash
 cd ~
 scp .ssh/tunnel <leomed-vm>:.ssh/tunnel
 ```
 
-4. [leomed-vm] Configure `.ssh/config` entry for `github.com`:
+4. `[leomed-vm]` Configure `.ssh/config` entry for `github.com`:
 
 ```bash
 cd ~
@@ -98,13 +98,13 @@ Host github.com
 :wq
 ```
 
-5. [labtop] Make sure you have loaded your github ssh key:
+5. `[labtop]` Make sure you have loaded your github ssh key:
 
 ```bash
 ssh-add .ssh/<github-key>
 ```
 
-6. [labtop] Make sure you have configured `ForwardAgent` for your ssh connection to the `leomed-vm`:
+6. `[labtop]` Make sure you have configured `ForwardAgent` for your ssh connection to the `leomed-vm`:
 
 ```bash
 cd ~
@@ -115,4 +115,4 @@ Host leomed-vm
 ...
 ```
 
-7. [labtop] Now you can `ssh` to the `leomed-vm` and do what ever you want with git(hub).
+7. `[labtop]` Now you can `ssh` to the `leomed-vm` and do what ever you want with git(hub).
