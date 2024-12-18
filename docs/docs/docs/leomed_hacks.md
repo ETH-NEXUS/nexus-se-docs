@@ -76,6 +76,16 @@ That can be setup going through the following steps:
     ssh -4 -N -T -R 2222:localhost:2222 <leomed-vm>
     ```
 
+    Or you just add the following line into your appropriate `~/.ssh/config` section:
+
+    ```bash
+    Host <leomed-vm>
+        HostName <leomed-vm>.leomed.ethz.ch
+        User <ETHZ-ID>
+        ProxyJump <leomed-jump-host>
+        RemoteForward 2222 localhost:2222
+    ```
+
 3. `[laptop]` Copy over the private key of the tunnel (created by the script in 1.):
 
     ```bash
@@ -96,6 +106,11 @@ That can be setup going through the following steps:
 
     Host github.com
         HostName github.com
+        User git
+        ProxyJump proxy
+
+    Host gitlab.ethz.ch
+        HostName gitlab.ethz.ch
         User git
         ProxyJump proxy
     :wq
